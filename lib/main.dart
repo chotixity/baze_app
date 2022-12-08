@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import './Screens/intro_screen.dart';
+import './widgets/Tabs.dart';
 
 void main() {
   runApp(const MyApp());
@@ -32,7 +33,10 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: IntroScreen(),
+      home: const IntroScreen(),
+      routes: {
+        Tabs.routeName: (context) => Tabs(),
+      },
     );
   }
 }
