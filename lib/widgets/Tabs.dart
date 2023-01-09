@@ -41,17 +41,28 @@ class _TabsState extends State<Tabs> with SingleTickerProviderStateMixin {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return Scaffold(
-      appBar: AppBar(
-          //bottom: TabBar(
-          //  tabs: myTabs,
-          //  controller: _tabController,
-          // )
-          ),
       body: Container(
         padding: const EdgeInsets.all(10),
         child: Column(
           children: [
+            const SizedBox(
+              height: 30,
+            ),
+            const Text(
+              'Sign up as a: ',
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 25,
+              ),
+            ),
             TabBar(
+              indicator: const BoxDecoration(
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(30),
+                  topRight: Radius.circular(30),
+                ),
+              ),
+              //splashBorderRadius: ,
               labelColor: Colors.black,
               tabs: myTabs,
               controller: _tabController,
@@ -60,10 +71,81 @@ class _TabsState extends State<Tabs> with SingleTickerProviderStateMixin {
               child: TabBarView(
                 controller: _tabController,
                 children: [
-                  Center(
-                    child: Text(
-                      'I am a Tenant',
-                      style: theme.textTheme.titleSmall,
+                  Expanded(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(top: 20),
+                          child: Text(
+                            'As a tenant baze will help you to: ',
+                            style: theme.textTheme.titleSmall,
+                          ),
+                        ),
+                        Expanded(
+                          child: ListView(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(10),
+                                child: Row(
+                                  children: [
+                                    const Icon(Icons.check),
+                                    Text(
+                                      'view hostels before you rent',
+                                      style: theme.textTheme.bodyMedium,
+                                    )
+                                  ],
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                  bottom: 10,
+                                  left: 10,
+                                ),
+                                child: Row(
+                                  children: [
+                                    const Icon(Icons.check),
+                                    Text(
+                                      'Contact prospective landlords',
+                                      style: theme.textTheme.bodyMedium,
+                                    )
+                                  ],
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                  bottom: 10,
+                                  left: 10,
+                                ),
+                                child: Row(
+                                  children: [
+                                    const Icon(Icons.check),
+                                    Text(
+                                      'Pay and save your rent through baze wallet',
+                                      style: theme.textTheme.bodyMedium,
+                                    )
+                                  ],
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                  bottom: 10,
+                                  left: 10,
+                                ),
+                                child: Row(
+                                  children: [
+                                    const Icon(Icons.check),
+                                    Text(
+                                      'Help your friend pay rent when they cannot pay for the month',
+                                      style: theme.textTheme.bodyMedium,
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                   Center(
