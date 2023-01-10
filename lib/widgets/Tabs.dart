@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../widgets/sign-in.dart';
+import '../widgets/lists.dart';
+
 class Tabs extends StatefulWidget {
   static const routeName = '/Tabs';
   const Tabs({super.key});
@@ -42,6 +45,7 @@ class _TabsState extends State<Tabs> with SingleTickerProviderStateMixin {
     final theme = Theme.of(context);
     return Scaffold(
       body: Container(
+        //color: Colors.orange,
         padding: const EdgeInsets.all(10),
         child: Column(
           children: [
@@ -55,17 +59,22 @@ class _TabsState extends State<Tabs> with SingleTickerProviderStateMixin {
                 fontSize: 25,
               ),
             ),
-            TabBar(
-              indicator: const BoxDecoration(
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(30),
-                  topRight: Radius.circular(30),
+            Container(
+              //color: Colors.brown,
+              child: TabBar(
+                overlayColor: MaterialStateProperty.all<Color>(Colors.brown),
+                indicator: const BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(30),
+                    topRight: Radius.circular(30),
+                  ),
+                  color: Colors.brown,
                 ),
+                //splashBorderRadius: ,
+                labelColor: Colors.black,
+                tabs: myTabs,
+                controller: _tabController,
               ),
-              //splashBorderRadius: ,
-              labelColor: Colors.black,
-              tabs: myTabs,
-              controller: _tabController,
             ),
             Expanded(
               child: TabBarView(
@@ -97,50 +106,14 @@ class _TabsState extends State<Tabs> with SingleTickerProviderStateMixin {
                                   ],
                                 ),
                               ),
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                  bottom: 10,
-                                  left: 10,
-                                ),
-                                child: Row(
-                                  children: [
-                                    const Icon(Icons.check),
-                                    Text(
-                                      'Contact prospective landlords',
-                                      style: theme.textTheme.bodyMedium,
-                                    )
-                                  ],
-                                ),
+                              Lists(
+                                'Contact prospective landlords',
                               ),
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                  bottom: 10,
-                                  left: 10,
-                                ),
-                                child: Row(
-                                  children: [
-                                    const Icon(Icons.check),
-                                    Text(
-                                      'Pay and save your rent through baze wallet',
-                                      style: theme.textTheme.bodyMedium,
-                                    )
-                                  ],
-                                ),
+                              Lists(
+                                'Pay and save your rent through baze wallet',
                               ),
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                  bottom: 10,
-                                  left: 10,
-                                ),
-                                child: Row(
-                                  children: [
-                                    const Icon(Icons.check),
-                                    Text(
-                                      'Help your friend pay rent when they cannot pay for the month',
-                                      style: theme.textTheme.bodyMedium,
-                                    )
-                                  ],
-                                ),
+                              Lists(
+                                'Help your friend pay rent when they cannot pay for the month',
                               ),
                             ],
                           ),
